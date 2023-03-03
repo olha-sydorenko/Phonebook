@@ -30,6 +30,25 @@ export const UserAPI = {
     const { data } = await $publicHost.post(`users/login`, formData);
     return data;
   },
+  async logOut() {
+    const { data } = await $privateHost.post(`/users/logout`);
+    return data;
+  },
+};
+
+export const ContactsAPI = {
+  async getContacts() {
+    const { data } = await $privateHost.get(`/contacts`);
+    return data;
+  },
+  async addContact(contactData) {
+    const { data } = await $privateHost.post(`/contacts`, contactData);
+    return data;
+  },
+  async deleteContact(contactId) {
+    const { data } = await $privateHost.delete(`/contacts/${contactId}`);
+    return data;
+  },
 };
 
 // export const fetchContacts = async () => {

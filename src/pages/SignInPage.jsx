@@ -1,23 +1,24 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-// import { useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { loginRequest } from '../redux/operations/operations';
 // import { selectAuthError, selectIsLoggedIn } from 'redux/userSlice/selectors';
 
 import { UserForm } from '../components/UserForm/UserForm';
+import { useNavigate } from 'react-router-dom';
+import { selectIsLoggedIn } from 'redux/user/userSelectors';
 
 function SignInPage() {
   const dispatch = useDispatch();
-  //   const navigate = useNavigate();
-  //   const isLoggedIn = useSelector(selectIsLoggedIn);
-  //   const error = useSelector(selectAuthError);
+  const navigate = useNavigate();
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  //const error = useSelector(selectAuthError);
 
-  //   useEffect(() => {
-  //     if (!isLoggedIn) return;
+  useEffect(() => {
+    if (!isLoggedIn) return;
 
-  //     navigate('/contacts');
-  //   }, [isLoggedIn, navigate]);
+    navigate('/contacts');
+  }, [isLoggedIn, navigate]);
 
   const handleLogin = formData => {
     dispatch(loginRequest(formData));

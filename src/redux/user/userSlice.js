@@ -1,5 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { registerRequest, loginRequest } from '../operations/operations';
+import {
+  registerRequest,
+  loginRequest,
+  logOutRequest,
+} from '../operations/operations';
 
 const initialState = {
   userData: {
@@ -22,7 +26,8 @@ const userSlice = createSlice({
       .addCase(registerRequest.fulfilled, (state, action) => {
         state.status = 'resolved';
         state.isLoggedIn = true;
-        state.userData = action.payload;
+        state.userData.name = action.payload.user.name;
+        state.userData.email = action.payload.user.email;
       })
       .addCase(registerRequest.rejected, rejectHandler)
 
@@ -30,9 +35,19 @@ const userSlice = createSlice({
       .addCase(loginRequest.fulfilled, (state, action) => {
         state.status = 'resolved';
         state.isLoggedIn = true;
-        state.userData = action.payload;
+        state.userData.name = action.payload.user.name;
+        state.userData.email = action.payload.user.email;
       })
-      .addCase(loginRequest.rejected, rejectHandler),
+      .addCase(loginRequest.rejected, rejectHandler)
+
+      .addCase(logOutRequest.pending, pendingHandler)
+      .addCase(logOutRequest.fulfilled, state => {
+        state.status = 'resolved';
+        state.isLoggedIn = false;
+        state.userData.name = null;
+        state.userData.email = null;
+      })
+      .addCase(logOutRequest.rejected, rejectHandler),
 });
 
 function pendingHandler(state) {
