@@ -30,8 +30,7 @@ const userSlice = createSlice({
       .addCase(loginRequest.fulfilled, (state, action) => {
         state.status = 'resolved';
         state.isLoggedIn = true;
-        state.userData.name = action.payload.user.name;
-        state.userData.email = action.payload.user.email;
+        state.userData = action.payload;
       })
       .addCase(loginRequest.rejected, rejectHandler),
 });
