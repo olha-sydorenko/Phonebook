@@ -4,22 +4,26 @@ import { List } from './ContactList.styled';
 
 import { Contact } from 'components/Contact/Contact';
 import {
-  selectContacts,
-  //selectFilteredContacts,
+  selectContactsError,
+  selectContactsSatus,
+  selectFilteredContacts,
 } from 'redux/contacts/contactsSelectors';
 import { getContactsRequest } from 'redux/operations/operations';
-import { selectError, selectStatus } from 'redux/user/userSelectors';
+import { selectIsLoggedIn } from 'redux/user/userSelectors';
 
 export const ContactList = () => {
-  const contacts = useSelector(selectContacts);
-  //const isLoading = useSelector(selectIsLoading);
-  const status = useSelector(selectStatus);
-  const error = useSelector(selectError);
+  //const contacts = useSelector(selectContacts);
+  const contacts = useSelector(selectFilteredContacts);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const status = useSelector(selectContactsSatus);
+  const error = useSelector(selectContactsError);
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (!isLoggedIn) return;
+
     dispatch(getContactsRequest());
-  }, [dispatch]);
+  }, [isLoggedIn, dispatch]);
 
   return (
     <>
