@@ -3,6 +3,7 @@ import {
   registerRequest,
   loginRequest,
   logOutRequest,
+  getCurrentUserRequest,
 } from '../operations/operations';
 
 const initialState = {
@@ -47,7 +48,16 @@ const userSlice = createSlice({
         state.userData.name = null;
         state.userData.email = null;
       })
-      .addCase(logOutRequest.rejected, rejectHandler),
+      .addCase(logOutRequest.rejected, rejectHandler)
+
+      .addCase(getCurrentUserRequest.pending, pendingHandler)
+      .addCase(getCurrentUserRequest.fulfilled, (state, action) => {
+        state.status = 'resolved';
+        state.isLoggedIn = true;
+        state.userData.name = action.payload.name;
+        state.userData.email = action.payload.email;
+      })
+      .addCase(getCurrentUserRequest.rejected, rejectHandler),
 });
 
 function pendingHandler(state) {

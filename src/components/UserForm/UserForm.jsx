@@ -4,46 +4,6 @@ import React, { useRef } from 'react';
 import { Form, Label, Input, AddButton } from './UserForm.styled';
 
 export const UserForm = ({ onSubmit, isLoginForm = false }) => {
-  // const [name, setName] = useState('');
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
-  // const dispatch = useDispatch();
-
-  // const handleInputChange = event => {
-  //   const value = event.target.value;
-  //   const name = event.target.name;
-
-  //   switch (name) {
-  //     case 'name':
-  //       setName(value);
-  //       break;
-  //     case 'email':
-  //       setEmail(value);
-  //       break;
-  //     case 'password':
-  //       setPassword(value);
-  //       break;
-  //     default:
-  //       break;
-  //   }
-  // };
-
-  // const formData = {
-  //   name,
-  //   email,
-  //   password,
-  // };
-
-  // const handleSubmit = event => {
-  //   event.preventDefault();
-
-  //   setName('');
-  //   setEmail('');
-  //   setPassword('');
-
-  //   dispatch(addUser(formData));
-  // };
-
   const nameInputRef = useRef();
   const emailInputRef = useRef();
   const passwordInputRef = useRef();

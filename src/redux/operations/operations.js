@@ -43,6 +43,19 @@ export const logOutRequest = createAsyncThunk(
   }
 );
 
+export const getCurrentUserRequest = createAsyncThunk(
+  'user/getCurrent',
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await UserAPI.getUserDetails();
+
+      return response;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 export const getContactsRequest = createAsyncThunk(
   'contacts/getContacts',
   async (_, { rejectWithValue }) => {
