@@ -8,7 +8,7 @@ import React from 'react';
 function ContactsPage() {
   return (
     <Container>
-      <h2>Phonebook</h2>
+      <h2>Add contact</h2>
       <ContactForm />
       <h2>Contacts</h2>
       <Filter />

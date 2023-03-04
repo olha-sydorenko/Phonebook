@@ -1,17 +1,23 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import SignInPage from '../pages/SignInPage';
-import SignUpPage from '../pages/SignUpPage';
-import ContactsPage from 'pages/ContactsPage';
+//import SignInPage from '../pages/SignInPage';
+//import SignUpPage from '../pages/SignUpPage';
+//import ContactsPage from 'pages/ContactsPage';
 
 import { StyledNavLink } from './App.styled';
 import { selectIsLoggedIn } from 'redux/user/userSelectors';
 
-import HomePage from 'pages/HomePage';
+//import HomePage from 'pages/HomePage';
 import { UserMenu } from './UserMenu/UserMenu';
 import { getCurrentUserRequest } from 'redux/operations/operations';
+import { Loader } from './Loader/Loader';
+
+const HomePage = lazy(() => import('pages/HomePage'));
+const SignInPage = lazy(() => import('pages/SignInPage'));
+const SignUpPage = lazy(() => import('pages/SignUpPage'));
+const ContactsPage = lazy(() => import('pages/ContactsPage'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -44,14 +50,16 @@ export const App = () => {
       </header>
 
       <main>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/contacts" element={<ContactsPage />} />
-          <Route path="/sign-in" element={<SignInPage />} />
-          <Route path="/sign-up" element={<SignUpPage />} />
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/contacts" element={<ContactsPage />} />
+            <Route path="/sign-in" element={<SignInPage />} />
+            <Route path="/sign-up" element={<SignUpPage />} />
 
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </Suspense>
       </main>
     </div>
   );
