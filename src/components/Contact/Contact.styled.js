@@ -8,4 +8,5 @@ export const ListItem = styled.li`
   margin-top: 20px;
   margin-right: 5px;
   font-size: 20px;
+  font-weight: 600;
 `;

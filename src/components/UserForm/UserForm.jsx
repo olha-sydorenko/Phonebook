@@ -1,6 +1,4 @@
 import React, { useRef } from 'react';
-//import PropTypes from 'prop-types';
-
 import { Form, FormTitle, Label, Input, AddButton } from './UserForm.styled';
 
 export const UserForm = ({ onSubmit, isLoginForm = false }) => {

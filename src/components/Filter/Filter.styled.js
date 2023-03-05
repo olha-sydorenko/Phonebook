@@ -6,6 +6,7 @@ export const FilterWrapper = styled.div`
 
 export const FilterText = styled.p`
   font-size: 22px;
+  font-weight: 600;
   text-transform: uppercase;
   margin-bottom: 8px;
   color: white;

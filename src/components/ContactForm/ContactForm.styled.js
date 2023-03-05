@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Form = styled.form`
   display: inline-block;
-  margin: 40px auto;
+  margin: 30px auto;
   width: 300px;
   display: flex;
   flex-direction: column;
