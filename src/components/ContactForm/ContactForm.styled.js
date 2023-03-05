@@ -13,6 +13,11 @@ export const Form = styled.form`
   border-radius: 5px;
   background-color: lightgrey;
 `;
+export const FormTitle = styled.h2`
+  font-size: 20px;
+  text-transform: uppercase;
+  margin: 0 auto;
+`;
 
 export const Label = styled.label`
   font-size: 14px;

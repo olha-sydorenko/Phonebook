@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/contacts/contactsSelectors';
 import { addContactRequest } from 'redux/contacts/contactsOperations';
-import { Form, Label, Input, AddButton } from './ContactForm.styled';
+import { Form, Label, Input, AddButton, FormTitle } from './ContactForm.styled';
 
 export const ContactForm = () => {
   const [name, setName] = useState('');
@@ -53,6 +53,7 @@ export const ContactForm = () => {
   return (
     <div>
       <Form onSubmit={handleSubmit}>
+        <FormTitle>Add contact</FormTitle>
         <Label>
           Name
           <Input
