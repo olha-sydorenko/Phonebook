@@ -13,7 +13,6 @@ import { selectIsLoggedIn } from 'redux/user/userSelectors';
 import { Loader } from 'components/Loader/Loader';
 
 export const ContactList = () => {
-  //const contacts = useSelector(selectContacts);
   const contacts = useSelector(selectFilteredContacts);
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const status = useSelector(selectContactsSatus);
