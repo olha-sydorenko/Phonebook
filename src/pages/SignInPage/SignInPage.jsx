@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { loginRequest } from '../../redux/operations/operations';
+import { loginRequest } from 'redux/user/userOperations';
 
-import { UserForm } from '../../components/UserForm/UserForm';
+import { UserForm } from 'components/UserForm/UserForm';
 import { useNavigate } from 'react-router-dom';
 import { selectAuthError, selectIsLoggedIn } from 'redux/user/userSelectors';
 

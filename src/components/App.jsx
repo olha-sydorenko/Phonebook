@@ -6,7 +6,7 @@ import { Wrapper, StyledNavLink, StyledNav, SignWrapper } from './App.styled';
 import { selectIsLoggedIn } from 'redux/user/userSelectors';
 
 import { UserMenu } from './UserMenu/UserMenu';
-import { getCurrentUserRequest } from 'redux/operations/operations';
+import { getCurrentUserRequest } from 'redux/user/userOperations';
 import { Loader } from './Loader/Loader';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));

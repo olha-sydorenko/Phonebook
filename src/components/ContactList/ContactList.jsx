@@ -8,7 +8,7 @@ import {
   selectContactsSatus,
   selectFilteredContacts,
 } from 'redux/contacts/contactsSelectors';
-import { getContactsRequest } from 'redux/operations/operations';
+import { getContactsRequest } from 'redux/contacts/contactsOperations';
 import { selectIsLoggedIn } from 'redux/user/userSelectors';
 import { Loader } from 'components/Loader/Loader';
 

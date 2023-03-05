@@ -3,7 +3,7 @@ import {
   addContactRequest,
   deleteContactRequest,
   getContactsRequest,
-} from 'redux/operations/operations';
+} from './contactsOperations';
 
 const initialState = {
   contacts: [],

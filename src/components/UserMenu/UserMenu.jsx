@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUserData } from 'redux/user/userSelectors';
-import { logOutRequest } from 'redux/operations/operations';
+import { logOutRequest } from 'redux/user/userOperations';
 import { UserMenuWrapper, MenuText, MenuButton } from './UserMenu.styled';
 
 export const UserMenu = () => {

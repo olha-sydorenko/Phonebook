@@ -4,7 +4,7 @@ import {
   loginRequest,
   logOutRequest,
   getCurrentUserRequest,
-} from '../operations/operations';
+} from './userOperations';
 
 const initialState = {
   userData: {
