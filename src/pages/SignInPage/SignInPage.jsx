@@ -1,18 +1,17 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { loginRequest } from '../redux/operations/operations';
-// import { selectAuthError, selectIsLoggedIn } from 'redux/userSlice/selectors';
+import { loginRequest } from '../../redux/operations/operations';
 
-import { UserForm } from '../components/UserForm/UserForm';
+import { UserForm } from '../../components/UserForm/UserForm';
 import { useNavigate } from 'react-router-dom';
-import { selectIsLoggedIn } from 'redux/user/userSelectors';
+import { selectAuthError, selectIsLoggedIn } from 'redux/user/userSelectors';
 
 function SignInPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  //const error = useSelector(selectAuthError);
+  const error = useSelector(selectAuthError);
 
   useEffect(() => {
     if (!isLoggedIn) return;
@@ -26,11 +25,7 @@ function SignInPage() {
 
   return (
     <div>
-      {/* {error !== null && (
-        <Alert>
-          <p>Oops, some error occured... {error}</p>
-        </Alert>
-      )} */}
+      {error !== null && <p>🙀 Something has gone wrong... Message: {error}</p>}
       <UserForm onSubmit={handleLogin} isLoginForm />
     </div>
   );

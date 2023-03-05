@@ -2,22 +2,17 @@ import React, { useEffect, lazy, Suspense } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-//import SignInPage from '../pages/SignInPage';
-//import SignUpPage from '../pages/SignUpPage';
-//import ContactsPage from 'pages/ContactsPage';
-
-import { StyledNavLink } from './App.styled';
+import { Wrapper, StyledNavLink, StyledNav, SignWrapper } from './App.styled';
 import { selectIsLoggedIn } from 'redux/user/userSelectors';
 
-//import HomePage from 'pages/HomePage';
 import { UserMenu } from './UserMenu/UserMenu';
 import { getCurrentUserRequest } from 'redux/operations/operations';
 import { Loader } from './Loader/Loader';
 
-const HomePage = lazy(() => import('pages/HomePage'));
-const SignInPage = lazy(() => import('pages/SignInPage'));
-const SignUpPage = lazy(() => import('pages/SignUpPage'));
-const ContactsPage = lazy(() => import('pages/ContactsPage'));
+const HomePage = lazy(() => import('pages/HomePage/HomePage'));
+const SignInPage = lazy(() => import('pages/SignInPage/SignInPage'));
+const SignUpPage = lazy(() => import('pages/SignUpPage/SignUpPage'));
+const ContactsPage = lazy(() => import('pages/ContactsPage/ContactsPage'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -31,9 +26,9 @@ export const App = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <Wrapper>
       <header>
-        <nav>
+        <StyledNav>
           <StyledNavLink to="/">Home</StyledNavLink>
           {isLoggedIn ? (
             <>
@@ -41,12 +36,12 @@ export const App = () => {
               <UserMenu />
             </>
           ) : (
-            <>
+            <SignWrapper>
               <StyledNavLink to="/sign-in">Sign In</StyledNavLink>
               <StyledNavLink to="/sign-up">Sign Up</StyledNavLink>
-            </>
+            </SignWrapper>
           )}
-        </nav>
+        </StyledNav>
       </header>
 
       <main>
@@ -61,6 +56,6 @@ export const App = () => {
           </Routes>
         </Suspense>
       </main>
-    </div>
+    </Wrapper>
   );
 };

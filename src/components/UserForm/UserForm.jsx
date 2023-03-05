@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 //import PropTypes from 'prop-types';
 
-import { Form, Label, Input, AddButton } from './UserForm.styled';
+import { Form, FormTitle, Label, Input, AddButton } from './UserForm.styled';
 
 export const UserForm = ({ onSubmit, isLoginForm = false }) => {
   const nameInputRef = useRef();
@@ -24,7 +24,7 @@ export const UserForm = ({ onSubmit, isLoginForm = false }) => {
   return (
     <div>
       <Form onSubmit={handleSubmit}>
-        <h2>{isLoginForm ? 'Sign In' : 'Sign Up'}</h2>
+        <FormTitle>{isLoginForm ? 'Sign In' : 'Sign Up'}</FormTitle>
         {isLoginForm ? null : (
           <Label>
             Name

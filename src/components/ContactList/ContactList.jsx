@@ -10,6 +10,7 @@ import {
 } from 'redux/contacts/contactsSelectors';
 import { getContactsRequest } from 'redux/operations/operations';
 import { selectIsLoggedIn } from 'redux/user/userSelectors';
+import { Loader } from 'components/Loader/Loader';
 
 export const ContactList = () => {
   //const contacts = useSelector(selectContacts);
@@ -27,8 +28,8 @@ export const ContactList = () => {
 
   return (
     <>
-      {status === 'pending' && <p>Loading in progress</p>}
-      {error !== null && <p>Oops, some error occured... Message: {error}</p>}
+      {status === 'pending' && <Loader />}
+      {error !== null && <p>🙀 Something has gone wrong... Message: {error}</p>}
       <List>
         {contacts?.length > 0 &&
           contacts.map(contact => {
